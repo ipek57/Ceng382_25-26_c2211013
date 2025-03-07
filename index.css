@@ -1,0 +1,169 @@
+/* Genel Sayfa Stili */
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Arkaplan - Başlangıçta JPG, sonra GIF olacak */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("./assets/wallpaperflare.com_wallpaper.jpg") no-repeat center
+    center fixed;
+  background-size: cover;
+  transition: background 1s ease-in-out;
+}
+
+/* Yay ve Ok Konteyner */
+.bow-container {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Yay (Esnek Bükülme Efekti İçin) */
+.bow {
+  width: 60px;
+  height: 120px;
+  border: 5px solid rgb(149, 47, 36);
+  border-left: none;
+  border-radius: 50% 0 0 50%;
+  transition: transform 0.2s ease-in-out;
+  box-shadow: -5px 0 10px rgba(251, 156, 115, 0.594);
+}
+
+/* Ok */
+.arrow {
+  position: absolute;
+  width: 100px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.452);
+  left: 20px;
+  top: 50%;
+  transform: rotate(-10deg);
+  transition: transform 0.5s ease-out, left 0.5s ease-out,
+    opacity 0.2s ease-in-out;
+  filter: drop-shadow(2px 2px 4px rgb(255, 183, 152));
+}
+
+/* Okun Ucu (Üçgen) */
+.arrow::after {
+  content: "";
+  position: absolute;
+  right: -8px;
+  top: -3px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid rgba(255, 255, 255, 0.646);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.6));
+}
+
+/* Okun Arkası */
+.arrow::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: -3px;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.472);
+  clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.6));
+}
+
+/* Ok Fırlama Efekti */
+.arrow.shoot {
+  transform: translateX(400px) rotate(0deg);
+  left: 250px;
+  opacity: 0;
+}
+
+/* Yayın Gerilme Animasyonunu nasıl yapabilirim? */
+.bow.pull {
+  transform: scaleX(1.2);
+}
+
+/* Yay Eski Haline Dönsün */
+.bow.release {
+  transform: scaleX(1);
+  transition: transform 0.3s ease-out;
+}
+
+/* Login Ekranı */
+.login-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  padding: 20px;
+  background: rgba(58, 55, 55, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid #6a6a6a0e;
+}
+
+.login-box h2 {
+  color: rgb(167, 135, 119);
+  text-shadow: 2px 2px 5px black;
+  text-align: center;
+}
+
+.login-box input {
+  width: 90%;
+  padding: 8px;
+  margin: 10px 0;
+  border: 2px solid #cb74493b;
+  border-radius: 20px;
+  background: rgba(235, 215, 209, 0.8);
+  text-align: center;
+  font-style: italic;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Tomb Raider Temalı Buton */
+.login-box button {
+  width: 96%;
+  padding: 12px;
+  margin-top: 12px;
+  background: #7a5c3e;
+  border: none;
+  color: rgb(228, 228, 228);
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 20px;
+  transition: background 0.3s;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.login-box button:hover {
+  background: #573f2d;
+}
+
+/* carpiya basinca baslangic ekranına donsun */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  color: #6d6d6d;
+}

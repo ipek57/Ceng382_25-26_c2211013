@@ -47,13 +47,16 @@ closeLoginBtn.addEventListener("click", () => {
   bow.classList.remove("release");
 });
 
-// Kullanıcı giriş bilgilerini saklayıp array içinde konsola nasıl bastırırız?
+// Kullanıcı giriş bilgilerini doğrulayıp yönlendirme yapalım
 loginButton.addEventListener("click", () => {
-  const username = usernameInput.value;
-  const password = passwordInput.value;
-  if (username && password) {
-    loginData.push({ username, password });
-    console.log("Login Attempts:", loginData);
+  const username = usernameInput.value.trim(); // Boşlukları temizleyelim
+  const password = passwordInput.value.trim();
+
+  if (username === "admin" && password === "admin") {
+    console.log("Login successful!");
+    window.location.href = "table.html"; // Kullanıcıyı table.html'e yönlendir
+  } else {
+    alert("You are not admin!!"); // Yanlış giriş yapıldıysa uyarı ver
   }
 });
 

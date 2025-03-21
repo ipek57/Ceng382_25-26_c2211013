@@ -1,0 +1,73 @@
+.bg-image-vertical {
+  position: relative;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: auto 100%;
+}
+
+@media (min-width: 1025px) {
+  .h-custom-2 {
+    height: 100%;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Gereksiz kaydırmayı engeller */
+}
+
+section.vh-100 {
+  min-height: 100vh; /* Sayfanın tamamını kaplamasını sağlar */
+  display: flex;
+  align-items: center;
+}
+
+.container-fluid {
+  height: 100vh; /* Tam ekran yüksekliği */
+}
+
+.row {
+  height: 100%;
+}
+
+.login-container {
+  background: linear-gradient(
+      135deg,
+      rgba(9, 13, 65, 0.7),
+      rgba(62, 3, 78, 0.7)
+    ),
+    /* Gradientin saydamlığını azalttık */ url("/img/nice2.png"); /* Arka plan resmi */
+  background-size: cover; /* Resmi tam ekrana yay */
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white; /* Yazı rengini beyaz yap */
+}
+
+.login-box {
+  background: rgba(157, 138, 210, 0.326); /* Siyah, %60 saydamlık */
+  border-radius: 15px; /* Köşeleri yuvarla */
+  padding: 30px; /* İç boşluk */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Hafif gölge efekti */
+  margin-top: -70px !important; /* Yukarı taşı */
+}
+
+.form-container {
+  margin-top: -100px !important; /* Formu yukarı taşı */
+  margin-bottom: 50px;
+}
+
+/* Forgot password linkini beyaz yap */
+.login-box a.text-muted {
+  color: rgba(255, 255, 255, 0.516) !important; /* Rengi beyaz yap */
+  text-decoration: none; /* Alt çizgiyi kaldır */
+}
+
+/* Hover durumunda rengi biraz gri yap */
+.login-box a.text-muted:hover {
+  color: #f0f0f086 !important;
+  text-decoration: underline; /* Üzerine gelince alt çizgi ekle */
+}

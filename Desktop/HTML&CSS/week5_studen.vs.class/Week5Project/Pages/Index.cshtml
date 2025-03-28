@@ -1,0 +1,81 @@
+﻿@page
+@model Week5Project.Pages.IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<link rel="stylesheet" href="~/css/custom.css" />
+
+<div class="d-flex justify-content-center gap-4 flex-wrap px-4 mt-4">
+    <div class="glass-box flex-fill" style="max-width: 500px; min-width: 300px;">
+        <h4>@(Model.EditMode ? "Edit Class" : "Add Class")</h4>
+        <form method="post">
+            <input type="hidden" asp-for="NewClass.Id" />
+
+            <div class="mb-3">
+                <label>Class Name</label>
+                <input class="form-control" asp-for="NewClass.ClassName" />
+                <span asp-validation-for="NewClass.ClassName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label>Student Count</label>
+                <input class="form-control" asp-for="NewClass.StudentCount" type="number" />
+                <span asp-validation-for="NewClass.StudentCount" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label>Description</label>
+                <textarea class="form-control" asp-for="NewClass.Description"></textarea>
+            </div>
+
+            @if (Model.EditMode)
+            {
+                <button type="submit" asp-page-handler="Update" class="btn btn-success">Update</button>
+                <a href="/" class="btn btn-secondary ms-2">Cancel</a>
+            }
+            else
+            {
+                <button type="submit" asp-page-handler="Add" class="btn btn-primary">Add</button>
+            }
+        </form>
+    </div>
+
+    <div class="glass-box flex-fill" style="min-width: 500px;">
+        <h4>Class List</h4>
+        <table class="table table-hover table-bordered bg-white bg-opacity-75">
+            <thead class="table-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Class Name</th>
+                    <th>Student Count</th>
+                    <th>Description</th>
+                    <th>Edit or Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ClassList)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.ClassName</td>
+                        <td>@item.StudentCount</td>
+                        <td>@item.Description</td>
+                        <td class="text-nowrap">
+                            <form method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <button type="submit" asp-page-handler="Edit" class="btn btn-warning btn-sm me-1">
+                                    <i class="fas fa-pencil-alt"></i> Edit
+                                </button>
+                                <button type="submit" asp-page-handler="Delete" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

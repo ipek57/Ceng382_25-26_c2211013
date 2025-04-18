@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\Week7Lab\\Week5Project.csproj": {}
+    "C:\\Users\\User\\Desktop\\Week8Lab\\Week5Project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\Week7Lab\\Week5Project.csproj": {
+    "C:\\Users\\User\\Desktop\\Week8Lab\\Week5Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\Week7Lab\\Week5Project.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\Week8Lab\\Week5Project.csproj",
         "projectName": "Week5Project",
-        "projectPath": "C:\\Users\\User\\Desktop\\Week7Lab\\Week5Project.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\Week8Lab\\Week5Project.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\Week7Lab\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\Week8Lab\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

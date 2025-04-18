@@ -1,0 +1,28 @@
+@page
+@model Week5Project.Pages.LoginModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<link rel="stylesheet" href="~/css/login.css" />
+
+<!-- Login formunu aktifleştirmeme yardım et -->
+<div class="login-container">
+    <div class="login-box">
+        <h2>Login</h2>
+
+        <form method="post">
+            <div>
+                <label asp-for="Username"></label>
+                <input asp-for="Username" type="text" />
+            </div>
+            <div>
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="password" />
+            </div>
+            <div class="mt-2">
+                <button type="submit">Login</button>
+            </div>
+            <p class="text-danger mt-2">@Model.ErrorMessage</p>
+        </form>
+    </div>
+</div>
+

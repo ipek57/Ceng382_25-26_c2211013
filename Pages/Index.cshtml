@@ -44,23 +44,23 @@
     </div>
 
     <div class="glass-box flex-fill" style="min-width: 500px;">
-        <h4>Class List</h4>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0">Class List</h4>
+            <a class="logout-btn" href="/Logout">
+                <i class="fas fa-sign-out-alt me-1"></i> Logout
+            </a>
+        </div>
 
         <form method="get" class="mb-3 d-flex gap-2">
             <input type="text" name="SearchString" value="@Request.Query["SearchString"]" class="form-control" placeholder="Search class name..." />
             <button type="submit" class="btn btn-primary">Filter</button>
         </form>
 
-        <!-- Export JSON Buttons -->
-        <form method="post" asp-page-handler="ExportAllJson" id="exportAllJsonForm">
-            <input type="hidden" name="SelectedColumns" id="selectedColumnsInputAllJson" />
-            <button type="submit" class="btn btn-success mb-2 me-2">Export All (JSON)</button>
-        </form>
-
+        <!-- 🔄 Only one export button -->
         <form method="post" asp-page-handler="ExportFilteredJson" id="exportFilteredJsonForm">
             <input type="hidden" name="SelectedColumns" id="selectedColumnsInputFilteredJson" />
             <input type="hidden" name="SearchString" value="@Model.SearchString" />
-            <button type="submit" class="btn btn-secondary mb-3">Export Filtered (JSON)</button>
+            <button type="submit" class="btn btn-dark mb-3">Export (JSON)</button>
         </form>
 
         <table class="table table-hover table-bordered bg-white bg-opacity-75">
@@ -121,13 +121,21 @@
         const selectedCols = new Set();
 
         function toggleColumn(index) {
-            const th = document.querySelectorAll("table thead th")[index];
-            if (selectedCols.has(index)) {
+            const columnCells = [];
+
+            document.querySelectorAll("table tr").forEach(row => {
+                const cells = row.querySelectorAll("th, td");
+                if (cells[index]) columnCells.push(cells[index]);
+            });
+
+            const isActive = selectedCols.has(index);
+
+            if (isActive) {
                 selectedCols.delete(index);
-                th.style.backgroundColor = "";
+                columnCells.forEach(cell => cell.classList.remove("highlight-column"));
             } else {
                 selectedCols.add(index);
-                th.style.backgroundColor = "#d1b3ff";
+                columnCells.forEach(cell => cell.classList.add("highlight-column"));
             }
         }
 
@@ -138,12 +146,15 @@
             document.getElementById(inputId).value = finalIndexes.join(",");
         }
 
-        document.getElementById("exportAllJsonForm").addEventListener("submit", function () {
-            prepareExport("selectedColumnsInputAllJson");
-        });
-
         document.getElementById("exportFilteredJsonForm").addEventListener("submit", function () {
             prepareExport("selectedColumnsInputFilteredJson");
         });
     </script>
 }
+
+<style>
+    .highlight-column {
+        background-color: #d6b3ff !important;
+        color: black !important;
+    }
+</style>

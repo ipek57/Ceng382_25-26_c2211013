@@ -37,3 +37,8 @@ h4 {
 th[onclick] {
   cursor: pointer;
 }
+
+.highlight-column {
+  background-color: #d6b3ff !important;
+  color: black !important;
+}

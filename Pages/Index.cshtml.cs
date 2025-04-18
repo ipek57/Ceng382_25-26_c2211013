@@ -35,6 +35,17 @@ namespace Week5Project.Pages
 
         public void OnGet()
         {
+            var sessionUsername = HttpContext.Session.GetString("username");
+            var cookieUsername = Request.Cookies["username"];
+            var sessionToken = HttpContext.Session.GetString("token");
+            var cookieToken = Request.Cookies["token"];
+
+            if (sessionUsername == null || cookieUsername == null || sessionToken == null || cookieToken == null
+                || sessionUsername != cookieUsername || sessionToken != cookieToken)
+            {
+                Response.Redirect("/Login");
+                return;
+            }
             var query = _classList.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(SearchString))

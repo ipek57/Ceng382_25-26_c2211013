@@ -1,3 +1,6 @@
+using Week5Project.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,6 +13,10 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;                 // JavaScript erişemez
     options.Cookie.IsEssential = true;              // Zorunlu çerez
 });
+
+builder.Services.AddDbContext<SchoolDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SchoolDbConnection")));
+
 
 var app = builder.Build();
 

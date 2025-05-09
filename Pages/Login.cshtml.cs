@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.Json;
 using Week5Project.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Week5Project.Pages
 {

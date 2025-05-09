@@ -17,5 +17,8 @@ namespace Week5Project.Models
 
         [Required]
         public bool IsActive { get; set; }
+
+        public string? UserId { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }
